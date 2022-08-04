@@ -37,8 +37,8 @@ def count_words(a: str):
     return count
 
 
-# a = input()
-# count_words(a)
+a = input()
+count_words(a)
 
 assert count_words("kobyła, ma mały bok! Bok!") == {'kobyła': 1, 'ma': 1, 'mały': 1, 'bok': 2}
 assert count_words("C'est la vie, -- c'est la vie! closed-door") == {"c'est": 2, "la": 2, "vie": 2, "closed-door": 1}

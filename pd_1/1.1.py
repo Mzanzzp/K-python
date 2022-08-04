@@ -8,8 +8,8 @@ def format_number(a: int) -> str:
         print("podano liczbe ujemna")
 
 
-# a = int(input())
-# print(format_number(a))
+a = int(input())
+print(format_number(a))
 
 assert "100,000" == format_number(100000)
 assert "100,000,000,000,000,000,000,000" == format_number(100000000000000000000000)
