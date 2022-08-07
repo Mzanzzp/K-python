@@ -4,8 +4,9 @@ jemną reprezentację napisową
 """
 import math
 
-
-class Circle:
+class Figure:
+    pass
+class Circle(Figure):
 
     def __init__(self, radius=1):
         self.radius = radius
@@ -54,11 +55,14 @@ class Circle:
         return False
 
     def __add__(self, other):
-        return Circle(self.area + other.area)
+        return Circle((self.area + other.area)**0.5)
 
-class Square:
+# zad 3
+class Square(Figure):
     def __init__(self, side=1):
         self.side = side
+    def __str__(self):
+        return f"Square\n======\nside: \t{self.side}\narea: \t{self.area}"
 
     @property
     def side(self):
@@ -77,6 +81,24 @@ class Square:
     def area(self, value):
         self.radius = value ** 0.5
 
+    def __eq__(self, other):
+        if isinstance(other, Square):
+            return self.side == other.side
+        return False
+
+    def __gt__(self, other):
+        if isinstance(other, Square):
+            return self.side > other.side
+        return False
+
+    def __ge__(self, other):
+        if isinstance(other, Square):
+            return self.side >= other.side
+        return False
+
+    def __add__(self, other):
+        return Square((self.area + other.area)**0.5)
+
 
 a = Circle(1)
 b = Circle()
@@ -84,8 +106,18 @@ assert (a == b) == True
 assert (a > b) == False
 assert (a >= b) == True
 
-# a = Circle()
-# b = Circle(5)
+a = Circle()
+q = Circle(5)
 # g = a + b
 # print(g)
 # print(g.area)
+
+m = Square()
+n = Square(1)
+b = Square(4)
+assert (m == n) == True
+assert (m > n) == False
+assert (m >= n) == True
+assert (b == m) == False
+g = m + b
+print(g)
